@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="style.css" type="text/css" media="all" />
+  </head>
+  <body>
+    <div id="content" class="ui container"></div>
+    <script id="members-list-template"  type="text/template" charset="utf-8">
+      <div class="ui grid">
+        <div class="five wide column">
+          <h3 class="ui top attached header">Members</h3>
+          <div class="ui attached segment">
+            <table class="ui very basic collapsing celled table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Date Joined</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% _.forEach(members, function(member, i) { %>
+                <tr>
+                  <td>
+                    <h4 class="ui image header">
+                      <img src="<%= member.img %>" class="ui mini rounded image">
+                      <div class="content">
+                        <%= member.displayName %>
+                        <div class="sub header">@<%= member.twitterHandle %></div>
+                      </div>
+                    </h4>
+                  </td>
+                  <td><%= member.createdAt %></td>
+                </tr>
+                <% }); %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </script>
+    <script src="bundle.js" type="text/javascript" charset="utf-8"></script>
+  </body>
+</html>
